@@ -1,4 +1,4 @@
-# Sentech - Technical Assessment & Portfolio
+# README
 
 This repository contains a collection of answers and implementation examples for various software development aspects, from database queries to best practices for website security and performance.
 
@@ -76,6 +76,56 @@ This is my first time using vuejs
 ![Realtime Chat Application](screenshoot/realtimechat.png)
 
 **Dir:** [`realtime_chat`](realtime_chat)
+
+### Vue Questions
+*I have never used Vue.js before, but I think I can answer questions number 3 and 5 since they are more common questions.
+
+### List the most common cause of memory leaks in Vue.js apps and how they can be solved.
+1. **Event listeners not removed**
+2. **Timers/intervals not cleared**
+3. **Watchers not unsubscribed**
+4. **DOM references kept in closures**
+
+**Solutions:**
+```javascript
+// Remove event listeners
+beforeUnmount() {
+  window.removeEventListener('scroll', this.handleScroll)
+}
+
+// Clear timers
+beforeUnmount() {
+  clearInterval(this.timer)
+}
+
+// Unsubscribe watchers
+beforeUnmount() {
+  this.unwatch()
+}
+```
+
+### Pre-rendering vs Server-Side Rendering
+
+**Pre-rendering (Static Site Generation):**
+- HTML generated at build time
+- All pages ready before deployment
+- Suitable for content that rarely changes
+- Example: Nuxt.js with `nuxt generate`
+
+**Server-Side Rendering (SSR):**
+- HTML generated on each request
+- Content always fresh and up-to-date
+- Better for SEO and initial load
+- Example: Nuxt.js with `nuxt start`
+
+**Key Differences:**
+| Aspect | Pre-rendering | SSR |
+|--------|---------------|-----|
+| Build Time | Static files generated | Server app built |
+| Runtime | Serves static files | Generates HTML per request |
+| Performance | Faster (static) | Slower (dynamic) |
+| SEO | Good | Excellent |
+| Use Case | Blogs, docs | E-commerce, dashboards |
 
 ---
 
